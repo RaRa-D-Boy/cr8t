@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import type { AppRole } from "@/lib/session";
 import { CirclePlus, Compass, Home, MessageCircleMore, UserRound } from "lucide-react";
@@ -48,7 +48,7 @@ export function DashboardScreen({ activeTab, children, role = "consumer" }: Dash
       {children}
 
       <nav 
-        className={`theme-nav fixed inset-x-4 bottom-4 z-20 rounded-[28px] px-2 py-2 text-white shadow-[0_20px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-transform duration-300 ease-in-out ${
+        className={`theme-nav absolute inset-x-4 bottom-4 z-20 rounded-[28px] px-2 py-2 text-white shadow-[0_20px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-transform duration-300 ease-in-out ${
           isNavVisible ? "translate-y-0" : "translate-y-[calc(100%+1rem)]"
         }`}
       >
