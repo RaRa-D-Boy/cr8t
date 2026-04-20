@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { BriefcaseBusiness, MoveRight } from "lucide-react";
 import { inboxItems } from "@/app/screens/shared/screen-data";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 export function InboxScreen() {
+  const isNavVisible = useScrollVisibility(70);
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28 pt-2">
-      <div className="sticky-page-header flex items-start justify-between p-4 gap-4 backdrop-blur-xl rounded-[35px]">
+      <div className={`sticky-page-header flex items-center justify-between p-4 gap-4 backdrop-blur-xl rounded-[35px] ${isNavVisible ? "translate-y-0" : "-translate-y-full"}`}>
         <div>
           <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Inbox</p>
-          <h2 className="text-theme-primary mt-1 text-xl font-semibold">Creator conversations</h2>
+          {/* <h2 className="text-theme-primary mt-1 text-xl font-semibold">Creator conversations</h2> */}
         </div>
         <div className="theme-card rounded-full px-4 py-2 text-sm font-semibold">3 new</div>
       </div>
@@ -36,7 +38,7 @@ export function InboxScreen() {
               <span className="theme-card-subtle rounded-full px-3 py-1 text-xs font-semibold">{item.time}</span>
             </div>
             <div className="theme-card-traction rounded-full px-4 py-2 mt-4 inline-flex items-center gap-2 text-sm font-semibold">
-              Open conversation
+              <span className="text-black">Open conversation</span>
               <MoveRight className="h-4 w-4 text-black" />
             </div>
           </Link>

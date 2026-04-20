@@ -1,10 +1,13 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { creatorOpportunities } from "@/app/screens/shared/creator-data";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 export function CreatorDiscoverScreen() {
+  const isNavVisible = useScrollVisibility(70);
+
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28 pt-2">
-      <div className="sticky-page-header -mx-2 flex items-end justify-between gap-3 rounded-[40px] p-4 backdrop-blur-xl">
+      <div className={`sticky-page-header -mx-2 flex items-end justify-between gap-3 rounded-[40px] p-4 backdrop-blur-xl ${isNavVisible ? "translate-y-0" : "-translate-y-full"}`}>
         <div>
           <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Opportunities</p>
           <h3 className="text-theme-primary mt-1 text-xl font-semibold">Client briefs for creators</h3>

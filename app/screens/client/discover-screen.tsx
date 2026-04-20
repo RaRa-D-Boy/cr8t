@@ -4,11 +4,12 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { discoverCategories } from "@/app/screens/shared/screen-data";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 export function DiscoverScreen() {
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
+  const isNavVisible = useScrollVisibility(70);
   const selectedCount = selectedCategories.length;
   const buttonLabel = useMemo(() => {
     if (selectedCount === 0) {
@@ -36,10 +37,10 @@ export function DiscoverScreen() {
 
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28 pt-2">
-      <div className="sticky-page-header -mx-2 flex items-end justify-between gap-3 px-4 pb-4 pt-5 rounded-[40px] p-4 backdrop-blur-xl ">
+      <div className={`sticky-page-header -mx-2 flex items-center justify-between gap-3 px-4 pb-4 pt-5 rounded-[40px] p-4 backdrop-blur-xl ${isNavVisible ? "translate-y-0" : "-translate-y-full"}`}>
         <div>
           <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Creative handwork</p>
-          <h3 className="text-theme-primary mt-1 text-xl font-semibold">Choose categories</h3>
+          {/* <h3 className="text-theme-primary mt-1 text-xl font-semibold">Choose categories</h3> */}
         </div>
 
         {selectedCount > 0 ? (
@@ -105,7 +106,7 @@ export function DiscoverScreen() {
                     isSelected ? "bg-black text-white" : "theme-card-traction"
                   }`}
                 >
-                  {isSelected ? "Selected" : "Pick"}
+                  {isSelected ? "Selected" : (<strong className="text-black">Pick</strong>)}
                 </span>
               </div>
             </button>

@@ -81,8 +81,8 @@ export function CreatorCard({ creator, featured = false }: CreatorCardProps) {
             <span>{creator.rating}</span>
           </div>
           <span className="text-black px-3 py-2 rounded-full inline-flex items-center gap-2 text-sm font-semibold theme-card-traction">
-            Open profile
-            <ArrowRight className="h-4 w-4" />
+            <span className="text-black">Open profile</span>
+            <ArrowRight className="h-4 w-4 text-black" />
           </span>
         </div>
       </div>

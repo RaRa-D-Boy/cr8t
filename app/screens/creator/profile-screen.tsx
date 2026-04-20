@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { ArrowRight, Settings2, Sparkles } from "lucide-react";
 import { creatorProfileStats, creatorServicePackages } from "@/app/screens/shared/creator-data";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 export function CreatorProfileScreen() {
+  const isNavVisible = useScrollVisibility(70);
+  
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28">
       <section className="theme-card-strong theme-hero-gradient mt-5 rounded-[32px] p-5">
-        <div className="sticky-page-header -mx-5 -mt-5 flex items-center justify-between rounded-t-[32px] px-5 pb-4 pt-5">
+        <div className={`sticky-page-header -mx-5 -mt-5 flex items-center justify-between rounded-t-[32px] px-5 pb-4 pt-5 ${isNavVisible ? "translate-y-0" : "-translate-y-full"}`}>
           <div className="flex items-center gap-3">
             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/12 text-lg font-semibold text-white">
               JK

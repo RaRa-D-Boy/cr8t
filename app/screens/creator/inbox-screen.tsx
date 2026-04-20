@@ -1,10 +1,13 @@
 import { MessageCircleMore, MoveRight } from "lucide-react";
 import { creatorInboxItems } from "@/app/screens/shared/creator-data";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 export function CreatorInboxScreen() {
+  const isNavVisible = useScrollVisibility(70);
+  
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28 pt-2">
-      <div className="sticky-page-header flex items-start justify-between gap-4 rounded-[35px] p-4 backdrop-blur-xl">
+      <div className={`sticky-page-header flex items-start justify-between gap-4 rounded-[35px] p-4 backdrop-blur-xl ${isNavVisible ? "translate-y-0" : "-translate-y-full"}`}>
         <div>
           <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Inbox</p>
           <h2 className="text-theme-primary mt-1 text-xl font-semibold">Client conversations</h2>

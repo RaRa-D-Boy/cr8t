@@ -1,15 +1,21 @@
 import Image from "next/image";
 import { Bell, BriefcaseBusiness, TrendingUp } from "lucide-react";
 import { creatorLeadPreview, creatorOverviewStats } from "@/app/screens/shared/creator-data";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 export function CreatorHomeScreen() {
+  const isNavVisible = useScrollVisibility(70);
+  
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28">
-      <header className="sticky-page-header -mx-4 flex items-center justify-between gap-4 px-2 pb-4 pt-2">
+      <header className={`sticky-page-header pt-2 ${
+        isNavVisible ? "translate-y-0" : "-translate-y-full"
+      }`}>
+        <div className=" -mx-2 flex items-center justify-between gap-3  rounded-[40px] p-3 backdrop-blur-xl ">
         <div>
           <p className="theme-card inline-flex rounded-full px-4 py-3 text-sm font-medium">Creator mode</p>
         </div>
-        <div className="flex items-center gap-2 rounded-full p-4 backdrop-blur-xl">
+        <div className="flex items-center gap-2">
           <button
             type="button"
             aria-label="Open creator alerts"
@@ -18,6 +24,8 @@ export function CreatorHomeScreen() {
             <Bell className="h-4 w-4" />
           </button>
         </div>
+        </div>
+        
       </header>
 
       <h1 className="text-theme-primary mt-1 max-w-[18rem] text-[2.2rem] font-semibold leading-none tracking-tight">

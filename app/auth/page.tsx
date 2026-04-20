@@ -9,14 +9,9 @@ export default function AuthPage() {
 
   return (
     <MobileFrame contentClassName="app-scrollbar overflow-y-auto px-5 pb-8 pt-0">
-      <div className="flex min-h-full flex-col justify-between">
+      <div className="flex min-h-full flex-col justify-center items-center">
         <div>
-          <div className="sticky-page-header -mx-5 flex items-center justify-between px-5 pb-4 pt-8">
-          <div className="theme-card-strong rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]">
-            cr8t
-          </div>
-          <div className="theme-card rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em]">Auth</div>
-          </div>
+         
 
           <div className="mt-10">
             {/* <div className="theme-card-strong flex h-20 w-20 items-center justify-center rounded-[28px] shadow-[0_24px_60px_rgba(17,18,23,0.28)]">
@@ -66,14 +61,11 @@ export default function AuthPage() {
               </div>
             </div>
 
-            <div className="theme-card-strong rounded-[28px] p-5 shadow-[0_24px_60px_rgba(17,18,23,0.24)]">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/45">Two ways in</p>
-              <p className="mt-3 text-lg font-semibold">Choose the role that matches your workflow once you sign up or sign in.</p>
-            </div>
+            
           </div>
         </div>
 
-        <div className="space-y-3 pt-8">
+        <div className="space-y-3 pt-8 w-full">
           <button
             type="button"
             onClick={() => router.push("/auth/sign-up")}

@@ -87,7 +87,7 @@ export function DiscoverResultsScreen({
 
                   <div className="text-theme-muted mt-3 flex flex-wrap gap-3 text-xs font-medium">
                     <span>{creator.location}</span>
-                    <span>{creator.turnaround}</span>
+                    {/* <span>{creator.turnaround}</span> */}
                     <span>Starts {creator.startingAt}</span>
                   </div>
 

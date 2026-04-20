@@ -4,13 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 import { CirclePlus, FolderOpenDot } from "lucide-react";
 import { creatorPortfolioItems, creatorServicePackages } from "@/app/screens/shared/creator-data";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 export function CreatorPostsScreen() {
   const [activeTab, setActiveTab] = useState<"services" | "posts">("services");
-
+  const isNavVisible = useScrollVisibility(70);
+  
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28 pt-2">
-      <div className="sticky-page-header -mx-2 flex items-center justify-between gap-3 rounded-[35px] px-4 pb-4 pt-5 backdrop-blur-xl">
+      <div className={`sticky-page-header -mx-2 flex items-center justify-between gap-3 rounded-[35px] px-4 pb-4 pt-5 backdrop-blur-xl ${isNavVisible ? "translate-y-0" : "-translate-y-full"}`}>
         <div>
           <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Studio</p>
           <h1 className="text-theme-primary mt-1 text-xl font-semibold">Services and portfolio</h1>

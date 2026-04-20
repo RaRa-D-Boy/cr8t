@@ -12,6 +12,7 @@ import {
   subscribeToPosts,
   type UserPost,
 } from "@/lib/posts";
+import { useScrollVisibility } from "@/lib/util/useScrollElementVisibility";
 
 const postTypeOptions: Array<{ id: UserPost["type"]; label: string }> = [
   { id: "work", label: "Work" },
@@ -94,13 +95,13 @@ export function PostsScreen() {
   };
 
   const totalTraction = posts.reduce((total, post) => total + post.traction.length, 0);
-
+  const isNavVisible = useScrollVisibility(70);
   return (
     <div className="theme-surface app-scrollbar h-full overflow-y-auto px-4 pb-28 pt-2">
-      <div className="sticky-page-header backdrop-blur-xl rounded-[35px] -mx-2 flex items-center justify-between px-4 pb-4 pt-5">
+      <div className={`sticky-page-header backdrop-blur-xl rounded-[35px] -mx-2 flex items-center justify-between px-4 pb-4 pt-5 ${isNavVisible ? "translate-y-0" : "-translate-y-full"}`}>
         <div>
           <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Post board</p>
-          <h1 className="text-theme-primary mt-1 text-xl font-semibold">Share your request</h1>
+          {/* <h1 className="text-theme-primary mt-1 text-xl font-semibold">Share your request</h1> */}
         </div>
         <div className="theme-card rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]">
           {posts.length} posts
@@ -115,7 +116,6 @@ export function PostsScreen() {
               {totalTraction} creator actions
             </div>
           </div>
-
           <h2 className="username mt-1 text-xl font-semibold">Traction and responses</h2>
         </div>
 
@@ -164,18 +164,22 @@ export function PostsScreen() {
                           key={`${post.id}-${creator.slug}`}
                           className="theme-card-traction flex items-center justify-between gap-3 rounded-[22px] p-3"
                         >
-                          <div className="flex min-w-0 items-center gap-3">
+                          <div className="flex items-center gap-3 w-full ">
                             <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
                               <Image src={creator.avatar} alt={creator.name} fill className="object-cover" sizes="44px" />
                             </div>
-                            <div className="min-w-0">
+                            <div className="w-full">
                               <p className="text-[#111111] truncate text-sm font-semibold">{creator.name}</p>
-                              <p className="text-[#111111] text-xs">Rating {creator.rating}</p>
+                              <div className=" flex items-center gap-2 justify-between w-full ">
+                                <p className="text-[#111111] text-xs">Rating {creator.rating}</p>
+                                <span className="rounded-full bg-black px-3 py-1 text-[8px] font-semibold text-white">
+                                  {creator.status}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                          <span className="rounded-full bg-black px-3 py-1 text-[8px] font-semibold text-white">
-                            {creator.status}
-                          </span>
+
+
                         </div>
                       ))}
                     </div>
@@ -239,9 +243,8 @@ export function PostsScreen() {
                         key={option.id}
                         type="button"
                         onClick={() => setForm((current) => ({ ...current, type: option.id }))}
-                        className={`rounded-full px-4 py-2 text-sm font-semibold ${
-                          form.type === option.id ? "bg-[--accent-lime] text-[#111111]" : "theme-card-subtle"
-                        }`}
+                        className={`rounded-full px-4 py-2 text-sm font-semibold ${form.type === option.id ? "bg-[--accent-lime] text-[#111111]" : "theme-card-subtle"
+                          }`}
                       >
                         {option.label}
                       </button>

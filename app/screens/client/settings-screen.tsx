@@ -27,17 +27,15 @@ function SettingToggleRow({
     >
       <div>
         <p className="text-theme-primary text-sm font-semibold">{label}</p>
-        <p className="text-theme-muted mt-1 text-sm leading-6">{description}</p>
+        <p className="text-theme-muted mt-1 text-xs leading-6">{description}</p>
       </div>
       <span
-        className={`flex h-7 w-12 items-center rounded-full p-1 transition ${
-          checked ? "bg-[--accent-lime]" : "bg-black/10 dark:bg-white/10"
-        }`}
+        className={`flex h-7 w-12 items-center rounded-full p-1 transition ${checked ? "bg-[--accent-lime]" : "bg-black/10 dark:bg-white/10"
+          }`}
       >
         <span
-          className={`h-5 w-5 rounded-full bg-white shadow-[0_3px_10px_rgba(0,0,0,0.15)] transition ${
-            checked ? "translate-x-5" : "translate-x-0"
-          }`}
+          className={`h-5 w-5 rounded-full bg-white shadow-[0_3px_10px_rgba(0,0,0,0.15)] transition ${checked ? "translate-x-5" : "translate-x-0"
+            }`}
         />
       </span>
     </button>
@@ -57,7 +55,7 @@ function SettingLinkRow({ label, description }: SettingLinkRowProps) {
     >
       <div>
         <p className="text-theme-primary text-sm font-semibold">{label}</p>
-        <p className="text-theme-muted mt-1 text-sm leading-6">{description}</p>
+        <p className="text-theme-muted mt-1 text-xs leading-6">{description}</p>
       </div>
       <ChevronRight className="text-theme-muted h-4 w-4 shrink-0" />
     </button>
@@ -88,12 +86,12 @@ export function SettingsScreen({ role = "consumer" }: SettingsScreenProps) {
 
       <section className="theme-card-strong theme-hero-gradient mt-1 rounded-[30px] p-5">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
+          <div className="flex h-12 w-15 items-center justify-center rounded-full bg-white/10">
             <SlidersHorizontal className="h-5 w-5 text-[--accent-lime]" />
           </div>
           <div>
             <p className="text-sm font-semibold">Application settings</p>
-            <p className="mt-1 text-sm text-white/72">
+            <p className="mt-1 text-xs text-white/72">
               {isCreator
                 ? "Manage studio alerts, visibility, appearance, and creator account tools."
                 : "Manage appearance, alerts, privacy, and your account tools."}
@@ -105,15 +103,19 @@ export function SettingsScreen({ role = "consumer" }: SettingsScreenProps) {
       <section className="theme-card mt-4 rounded-[30px] p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Appearance</p>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Appearance</p>
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#d8ff37] text-[#111111]">
+                <Sparkles className="h-4 w-4" />
+              </div>
+            </div>
+
             <h2 className="text-theme-primary mt-1 text-2xl font-semibold">Theme</h2>
-            <p className="text-theme-muted mt-2 text-sm leading-6">
+            <p className="text-theme-muted mt-2 text-xs leading-6">
               Switch the app between light and dark appearance from one place.
             </p>
           </div>
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[--accent-lime] text-[#111111]">
-            <Sparkles className="h-4 w-4" />
-          </div>
+
         </div>
 
         <div className="mt-4">
@@ -123,8 +125,8 @@ export function SettingsScreen({ role = "consumer" }: SettingsScreenProps) {
 
       <section className="theme-card mt-4 rounded-[30px] p-5">
         <div className="flex items-center gap-3">
-          <div className="theme-card-traction flex h-12 w-12 items-center justify-center rounded-full">
-            <Bell className="h-4 w-4" />
+          <div className="theme-card-traction flex h-12 w-12 items-center justify-center rounded-full ">
+            <Bell className="h-4 w-4 text-[#111111]" />
           </div>
           <div>
             <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Notifications</p>
@@ -169,7 +171,7 @@ export function SettingsScreen({ role = "consumer" }: SettingsScreenProps) {
       <section className="theme-card mt-4 rounded-[30px] p-5">
         <div className="flex items-center gap-3">
           <div className="theme-card-traction flex h-12 w-12 items-center justify-center rounded-full">
-            <ShieldCheck className="h-4 w-4" />
+            <ShieldCheck className="h-4 w-4 text-[#111111]" />
           </div>
           <div>
             <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Privacy</p>
@@ -206,7 +208,7 @@ export function SettingsScreen({ role = "consumer" }: SettingsScreenProps) {
       <section className="theme-card mt-4 rounded-[30px] p-5">
         <div className="flex items-center gap-3">
           <div className="theme-card-traction flex h-12 w-12 items-center justify-center rounded-full">
-            <UserRound className="h-4 w-4" />
+            <UserRound className="h-4 w-4 text-[#111111]" />
           </div>
           <div>
             <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Account</p>
@@ -245,7 +247,7 @@ export function SettingsScreen({ role = "consumer" }: SettingsScreenProps) {
       <section className="theme-card mt-4 rounded-[30px] p-5">
         <div className="flex items-center gap-3">
           <div className="theme-card-traction flex h-12 w-12 items-center justify-center rounded-full">
-            <LockKeyhole className="h-4 w-4" />
+            <LockKeyhole className="h-4 w-4 text-[#111111]" />
           </div>
           <div>
             <p className="text-theme-muted text-xs font-semibold uppercase tracking-[0.22em]">Session</p>

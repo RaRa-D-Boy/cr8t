@@ -44,9 +44,7 @@ export default function SignInPage() {
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
-          <div className="theme-card-strong rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em]">
-            Sign in
-          </div>
+          
         </div>
 
         <div className="mt-4">
